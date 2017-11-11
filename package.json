@@ -4,10 +4,10 @@
   "description": "Extract and validate your GraphQL Schema annotations",
   "main": "dist/index.js",
   "scripts": {
+    "build": "babel src/lib --out-dir dist --ignore *.test.js",
     "test": "jest",
     "dev": "jest --watch",
-    "build": "babel src/lib --out-dir dist --ignore **/*.test.js",
-    "prepare": "npm run build"
+    "prepare": "npm run build && npm run test"
   },
   "repository": {
     "type": "git",
