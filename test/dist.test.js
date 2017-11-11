@@ -16,7 +16,10 @@ describe('lib tests', () => {
 
         expect(annotationData).toEqual({
                 foo: [
-                    {"bar": "barValue", "baz": "bazValue"}
+                    {
+                        node: jasmine.any(Object),
+                        arguments: {"bar": "barValue", "baz": "bazValue"}
+                    }
                 ]
             }
         );

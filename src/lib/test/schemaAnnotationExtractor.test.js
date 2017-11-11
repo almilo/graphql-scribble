@@ -37,7 +37,10 @@ describe('schema annotation extractor', () => {
                 `,
                 {
                     foo: [
-                        {"bar": "barValue", "baz": "bazValue"}
+                        {
+                            node: jasmine.any(Object),
+                            arguments: {"bar": "barValue", "baz": "bazValue"}
+                        }
                     ]
                 }
             ],
@@ -50,8 +53,14 @@ describe('schema annotation extractor', () => {
                 `,
                 {
                     foo: [
-                        {"bar": "barValue"},
-                        {"baz": "bazValue"}
+                        {
+                            node: jasmine.any(Object),
+                            arguments: {"bar": "barValue"}
+                        },
+                        {
+                            node: jasmine.any(Object),
+                            arguments: {"baz": "bazValue"}
+                        }
                     ]
                 }
             ],
@@ -64,12 +73,24 @@ describe('schema annotation extractor', () => {
                 `,
                 {
                     foo: [
-                        {"bar": "barValue"},
-                        {"baz": "bazValue"}
+                        {
+                            node: jasmine.any(Object),
+                            arguments: {"bar": "barValue"}
+                        },
+                        {
+                            node: jasmine.any(Object),
+                            arguments: {"baz": "bazValue"}
+                        }
                     ],
                     bar: [
-                        {"baz": "bazValue"},
-                        {"bar": "barValue"}
+                        {
+                            node: jasmine.any(Object),
+                            arguments: {"baz": "bazValue"}
+                        },
+                        {
+                            node: jasmine.any(Object),
+                            arguments: {"bar": "barValue"}
+                        }
                     ]
                 }
             ]
@@ -129,7 +150,11 @@ describe('schema annotation extractor', () => {
                 }
             `;
 
-            expect(schemaAnnotationExtractor.extract(schema)).toEqual({foo: [{bar: 42, foo: 'fooValue'}]});
+            expect(schemaAnnotationExtractor.extract(schema)).toEqual({
+                foo: [
+                    {node: jasmine.any(Object), arguments: {bar: 42, foo: 'fooValue'}}
+                ]
+            });
         });
 
     });

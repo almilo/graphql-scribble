@@ -72,7 +72,12 @@ function createAnnotationVisitor(annotationDescriptors) {
 
                 validate(validator, annotationName, annotationArguments);
 
-                (0, _utils.upsert)(allAnnotationsData, annotationName, annotationArguments);
+                var annotationData = {
+                    node: node,
+                    arguments: annotationArguments
+                };
+
+                (0, _utils.upsert)(allAnnotationsData, annotationName, annotationData);
             })
         };
 

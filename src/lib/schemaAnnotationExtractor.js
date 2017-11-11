@@ -46,7 +46,12 @@ function createAnnotationVisitor(annotationDescriptors) {
 
                     validate(validator, annotationName, annotationArguments);
 
-                    upsert(allAnnotationsData, annotationName, annotationArguments);
+                    const annotationData = {
+                        node,
+                        arguments: annotationArguments
+                    };
+
+                    upsert(allAnnotationsData, annotationName, annotationData);
                 }
             )
         };
